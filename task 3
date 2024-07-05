@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Webpage</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    nav {
+      background-color: #444;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    
+    section {
+      padding: 20px;
+      margin: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+    
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to My Enhanced Webpage</h1>
+  </header>
+
+  <nav>
+    <a href="#" id="home">Home</a>
+    <a href="#" id="about">About</a>
+    <a href="#" id="contact">Contact</a>
+  </nav>
+
+  <section>
+    <h2>About Us</h2>
+    <p>This is a simple webpage created with HTML, CSS, and JavaScript to demonstrate basic structure, styling, form validation, interactive menus, and dynamic content updates.</p>
+  </section>
+
+  <section id="contactSection">
+    <h2>Contact Us</h2>
+    <form id="contactForm" onsubmit="return validateForm()">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" required><br><br>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" rows="4" required></textarea><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </section>
+
+  <section id="dynamicContent">
+    <h2>Latest Updates</h2>
+    <ul id="updateList">
+      <!-- Dynamic content will be added here -->
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Enhanced Webpage. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Highlight active menu item based on current URL
+    var currentLocation = window.location.href;
+    var navLinks = document.querySelectorAll('nav a');
+
+    navLinks.forEach(link => {
+      if (link.href === currentLocation) {
+        link.style.fontWeight = 'bold';  // Highlight active link
+      }
+    });
+
+    // Form validation function
+    function validateForm() {
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var message = document.getElementById('message').value;
+      
+      if (name.trim() == '' || email.trim() == '' || message.trim() == '') {
+        alert('Please fill in all fields');
+        return false;
+      }
+      
+      // Additional validation logic can be added here, e.g., checking email format
+      
+      return true;  // Form submission allowed
+    }
+
+    // Simulating dynamic content updates (fetching data from an API)
+    setTimeout(function() {
+      var updates = [
+        { title: 'New feature released', date: '2024-07-04' },
+        { title: 'Bug fixes applied', date: '2024-07-02' }
+      ];
+
+      var updateList = document.getElementById('updateList');
+      updates.forEach(update => {
+        var li = document.createElement('li');
+        li.textContent = `${update.title} - ${update.date}`;
+        updateList.appendChild(li);
+      });
+    }, 1000);  // Simulated delay for demo
+  </script>
+
+</body>
+</html>
